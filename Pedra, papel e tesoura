@@ -1,0 +1,152 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int rule(char jogador, char carl)
+{
+	if (jogador == carl)
+	{
+		return 0;
+	}
+
+	if (jogador == 'r' && carl == 'p')
+	{
+		return -1;
+	}
+	else if (jogador == 't' && carl == 'p')
+	{
+		return 1;
+	}
+	else if (jogador == 'p' && carl == 'r')
+	{
+		return 1;
+	}
+	else if (jogador == 't' && carl == 'r')
+	{
+		return -1;
+	}
+	else if (jogador == 'r' && carl == 't')
+	{
+		return 1;
+	}
+	else if (jogador == 'p' && carl == 't')
+	{
+		return -1;
+	}
+}
+
+int main()
+{
+	char carl;
+	char jogador;
+	char denovo;
+
+	cout << "\n\n";
+	for (int i = 0; i < 50; i++)
+	{
+		cout << "~";
+	}
+	cout << endl;
+	cout << "\n\n\n\n";
+	cout << "\n seja bem vinde ao jogo de pedra, papel e tessoura!\n";			   //jogo inclusivo pq sim
+	cout << "\n você pode me chamar de carl e será um prazer te aniquilar hahaha"; // nem eu sei pq ele se chama carl
+	cout << "\n\n\n\n";
+	for (int i = 0; i < 50; i++)
+	{
+		cout << "~"; // formataçao bonitinha
+	}
+	{
+		int opcao = 0;
+
+		cout << "\n\nMas antes não me entenda mal, voce gostaria de saber das regras antes ?\n";
+		cout << "digite 1 para sim\n";
+		cout << "2 para não\n";
+		cin >> opcao;
+
+		switch (opcao)
+		{
+		case 1:
+			cout << "otimo vou explicar rocha > tesoura > papel > rocha";
+			break;
+		case 2:
+			cout << "se fode entao";
+			break;
+		default:
+			cout << "Opção inválida";
+			break;
+		}
+	
+		cout << "\n";
+		cout << "\n";
+		cout << "\n r : rocha" << endl
+			 << "\n"
+			 << "\n p - Papel" << endl
+			 << "\n"
+			 << "\n t : tessoura" << endl
+			 << "\n"
+			 << endl
+			 << endl;
+		cout << "\n";
+		for (int i = 0; i < 50; i++)
+		{
+			cout << "~";
+		}
+		cout << endl;
+		do
+		{
+			int number = 0;
+			srand(time(0));
+			number = rand() % 100;
+			// r - rocha
+			// p - papel
+			// t - tesoura
+			if (number < 33)
+			{
+				carl = 'r'; // Gosto de 3
+			}
+			else if (number > 33)
+			{
+				carl = 't';
+			}
+			else
+			{
+				carl = 'p';
+			}
+			// cout << "Note: \"r\" \"Rocha\", \"p\" \"Papel\", \"t\" \"tesoura\"." não esquecer pfv pq vc ja errou isso 3 vezes
+			cout << "\n";
+			cout << "faça sua melhor escolha: ";
+			cin >> jogador;
+			int result = rule(jogador, carl); //jogador tem que ser primeiro ne
+			if (result == 1)
+			{
+				cout << "\n\n";
+				cout << "eu perdi...VOC SÓ PODE ESTAR TRAPACEANDO"; // carl é um mal perdedor.. parece minha mãe
+			}
+			else if (result == -1)
+			{
+				cout << "\n\n";
+				cout << "você perdeu hahaha"; // eu botaria um "eu sou d+" porem acho que ta bom
+			}
+			else
+			{
+				cout << "\n\n";
+				cout << "um empate ???? COMO ISSO É POSSIVEL";
+			}
+			cout << "\n\n";
+			cout << "Então...você aceita mais uma partida ou está medo?";
+			cout << "\n\n";
+			cout << "se quiser revanche clique em qualquer letra!";
+			cout << "\nMas se tiver medo de uma revanche clique em 'n': ";
+			cin >> denovo;
+			// denovo ??? voce devia ter um comando melhor
+			cout << "\n\n";
+			for (int i = 0; i < 50; i++)
+			{
+				cout << "~";
+			}
+			
+		} while (denovo != 'n');
+
+		return 0;
+	}
+}
